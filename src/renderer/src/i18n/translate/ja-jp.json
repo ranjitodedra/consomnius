@@ -381,6 +381,9 @@
         "description": "デフォルトで有効な MCP サーバー",
         "enableFirst": "まず MCP 設定でこのサーバーを有効にしてください",
         "label": "MCP サーバー",
+        "marketplace": {
+          "title": "[to be translated]:MCP 市场"
+        },
         "noServersAvailable": "利用可能な MCP サーバーがありません。設定でサーバーを追加してください",
         "title": "MCP 設定"
       },
@@ -1959,6 +1962,14 @@
     "rename": "名前の変更",
     "rename_changed": "セキュリティポリシーにより、ファイル名は{{original}}から{{final}}に変更されました",
     "save": "メモに保存する",
+    "search": {
+      "both": "[to be translated]:名称+内容",
+      "content": "[to be translated]:内容",
+      "found_results": "[to be translated]:找到 {{count}} 个结果 (名称: {{nameCount}}, 内容: {{contentCount}})",
+      "more_matches": "[to be translated]:个匹配",
+      "searching": "[to be translated]:搜索中...",
+      "show_less": "[to be translated]:收起"
+    },
     "settings": {
       "data": {
         "apply": "応用",
@@ -2107,6 +2118,8 @@
       "install_code_103": "OVMSランタイムのダウンロードに失敗しました",
       "install_code_104": "OVMSランタイムの解凍に失敗しました",
       "install_code_105": "OVMSランタイムのクリーンアップに失敗しました",
+      "install_code_106": "[to be translated]:创建 run.bat 失败",
+      "install_code_110": "[to be translated]:清理旧 OVMS runtime 失败",
       "run": "OVMSの実行に失敗しました:",
       "stop": "OVMSの停止に失敗しました:"
     },

@@ -11,6 +11,7 @@ import DisplaySettings from './DisplaySettings/DisplaySettings'
 import DocProcessSettings from './DocProcessSettings'
 import GeneralSettings from './GeneralSettings'
 import MCPSettings from './MCPSettings'
+import MCPMarketplace from './MCPMarketplace'
 import MemorySettings from './MemorySettings'
 import NotesSettings from './NotesSettings'
 import { ProviderList } from './ProviderSettings'
@@ -39,6 +40,7 @@ const SettingsPage: FC = () => {
             <Route path="docprocess" element={<DocProcessSettings />} />
             <Route path="quickphrase" element={<QuickPhraseSettings />} />
             <Route path="mcp/*" element={<MCPSettings />} />
+            <Route path="mcp-marketplace/*" element={<MCPMarketplace />} />
             <Route path="memory" element={<MemorySettings />} />
             <Route path="general/*" element={<GeneralSettings />} />
             <Route path="display" element={<DisplaySettings />} />

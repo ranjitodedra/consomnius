@@ -381,6 +381,9 @@
         "description": "默认启用的 MCP 服务器",
         "enableFirst": "请先在 MCP 设置中启用此服务器",
         "label": "MCP 服务器",
+        "marketplace": {
+          "title": "MCP 市场"
+        },
         "noServersAvailable": "无可用 MCP 服务器。请在设置中添加服务器",
         "title": "MCP 服务器"
       },

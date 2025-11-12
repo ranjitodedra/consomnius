@@ -381,6 +381,9 @@
         "description": "Default enabled MCP servers",
         "enableFirst": "Enable this server in MCP settings first",
         "label": "MCP Servers",
+        "marketplace": {
+          "title": "MCP Marketplace"
+        },
         "noServersAvailable": "No MCP servers available. Add servers in settings",
         "title": "MCP Settings"
       },

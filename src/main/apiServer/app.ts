@@ -12,6 +12,7 @@ import { chatRoutes } from './routes/chat'
 import { mcpRoutes } from './routes/mcp'
 import { messagesProviderRoutes, messagesRoutes } from './routes/messages'
 import { modelsRoutes } from './routes/models'
+import { marketplaceRoutes } from './routes/marketplace'
 
 const logger = loggerService.withContext('ApiServer')
 
@@ -51,7 +52,7 @@ app.use((_req, res, next) => {
 app.use(
   cors({
     origin: '*',
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-User-Id', 'X-User-Email', 'X-User-Name'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
   })
 )
@@ -141,6 +142,10 @@ apiRouter.use('/messages', extendMessagesTimeout, messagesRoutes)
 apiRouter.use('/models', modelsRoutes)
 apiRouter.use('/agents', agentsRoutes)
 app.use('/v1', apiRouter)
+
+// Marketplace routes (public API, no auth middleware - auth handled per route)
+// Note: Frontend expects /api/marketplace, so we mount it at /api/marketplace
+app.use('/api/marketplace', marketplaceRoutes)
 
 // Error handling (must be last)
 app.use(errorHandler)

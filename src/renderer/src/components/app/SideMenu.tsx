@@ -32,6 +32,7 @@ import {
   Server,
   Settings2,
   Sparkle,
+  Store,
   Sun,
   TextCursorInput,
   Zap
@@ -103,6 +104,7 @@ const SideMenu: FC = () => {
       { path: '/settings/display', iconType: 'monitorCog', label: t('settings.display.title') },
       { path: '/settings/data', iconType: 'hardDrive', label: t('settings.data.title') },
       { path: '/settings/mcp', iconType: 'hammer', label: t('settings.mcp.title') },
+      { path: '/settings/mcp-marketplace', iconType: 'store', label: t('settings.mcp.marketplace.title', 'MCP Marketplace') },
       { path: '/settings/notes', iconType: 'notebookPen', label: t('notes.settings.title') },
       { path: '/settings/websearch', iconType: 'globalOutlined', label: t('settings.tool.websearch.title') },
       { path: '/settings/memory', iconType: 'brain', label: t('memory.title') },
@@ -131,6 +133,8 @@ const SideMenu: FC = () => {
         return <HardDrive size={18} />
       case 'hammer':
         return <Hammer size={18} />
+      case 'store':
+        return <Store size={18} />
       case 'notebookPen':
         return <NotebookPen size={18} />
       case 'globalOutlined':

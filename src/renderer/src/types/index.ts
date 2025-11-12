@@ -226,6 +226,16 @@ export type User = {
   email: string
 }
 
+export interface AuthUser {
+  id: string
+  email: string
+  name: string
+  picture?: string
+  isVerified: boolean
+  createdAt: Date
+  updatedAt: Date
+}
+
 export type ModelType = 'text' | 'vision' | 'embedding' | 'reasoning' | 'function_calling' | 'web_search' | 'rerank'
 
 export type ModelTag = Exclude<ModelType, 'text'> | 'free'
@@ -672,6 +682,16 @@ export interface MCPServer {
   shouldConfig?: boolean
   /** 用于标记服务器是否运行中 */
   isActive: boolean
+  /** Metadata for marketplace integration */
+  meta?: {
+    argsPrompts?: Array<{
+      argIndex: number
+      label?: string
+      type?: 'path' | 'text'
+    }>
+    /** Marketplace linkage: id of the marketplace server this MCP server originated from */
+    marketplaceId?: string
+  }
 }
 
 export type BuiltinMCPServer = MCPServer & {
