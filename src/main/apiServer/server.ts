@@ -2,6 +2,7 @@ import { createServer } from 'node:http'
 
 import { agentService } from '../services/agents'
 import { loggerService } from '../services/LoggerService'
+import { marketplaceService } from '../services/MarketplaceService'
 import { app } from './app'
 import { config } from './config'
 
@@ -27,6 +28,16 @@ export class ApiServer {
     logger.info('Initializing AgentService')
     await agentService.initialize()
     logger.info('AgentService initialized')
+
+    // Initialize MarketplaceService (MongoDB connection)
+    try {
+      logger.info('Initializing MarketplaceService')
+      await marketplaceService.connect()
+      logger.info('MarketplaceService initialized')
+    } catch (error: any) {
+      logger.warn('Failed to initialize MarketplaceService (marketplace features will be unavailable)', { error: error.message })
+      // Don't fail server startup if MongoDB is not available
+    }
 
     // Create server with Express app
     this.server = createServer(app)
@@ -54,8 +65,14 @@ export class ApiServer {
     if (!this.server) return
 
     return new Promise((resolve) => {
-      this.server!.close(() => {
+      this.server!.close(async () => {
         logger.info('API server stopped')
+        // Disconnect MongoDB
+        try {
+          await marketplaceService.disconnect()
+        } catch (error: any) {
+          logger.warn('Error disconnecting MarketplaceService', { error })
+        }
         this.server = null
         resolve()
       })

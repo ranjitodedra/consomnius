@@ -381,6 +381,9 @@
         "description": "Serveur MCP activé par défaut",
         "enableFirst": "Veuillez d'abord activer ce serveur dans les paramètres MCP",
         "label": "Serveur MCP",
+        "marketplace": {
+          "title": "[to be translated]:MCP 市场"
+        },
         "noServersAvailable": "Aucun serveur MCP disponible. Veuillez ajouter un serveur dans les paramètres",
         "title": "Paramètres MCP"
       },
@@ -1959,6 +1962,14 @@
     "rename": "renommer",
     "rename_changed": "En raison de la politique de sécurité, le nom du fichier a été changé de {{original}} à {{final}}",
     "save": "sauvegarder dans les notes",
+    "search": {
+      "both": "[to be translated]:名称+内容",
+      "content": "[to be translated]:内容",
+      "found_results": "[to be translated]:找到 {{count}} 个结果 (名称: {{nameCount}}, 内容: {{contentCount}})",
+      "more_matches": "[to be translated]:个匹配",
+      "searching": "[to be translated]:搜索中...",
+      "show_less": "[to be translated]:收起"
+    },
     "settings": {
       "data": {
         "apply": "application",
@@ -2107,6 +2118,8 @@
       "install_code_103": "Échec du téléchargement du runtime OVMS",
       "install_code_104": "Échec de la décompression du runtime OVMS",
       "install_code_105": "Échec du nettoyage du runtime OVMS",
+      "install_code_106": "[to be translated]:创建 run.bat 失败",
+      "install_code_110": "[to be translated]:清理旧 OVMS runtime 失败",
       "run": "Échec de l'exécution d'OVMS :",
       "stop": "Échec de l'arrêt d'OVMS :"
     },

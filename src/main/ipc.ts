@@ -845,6 +845,17 @@ export function registerIpc(mainWindow: BrowserWindow, app: Electron.App) {
       return null
     }
   })
+  
+  ipcMain.handle(IpcChannel.App_GetHomeDir, () => {
+    try {
+      const os = require('os')
+      return os.homedir()
+    } catch (error) {
+      logger.error('get home dir error', error as Error)
+      return ''
+    }
+  })
+  
   // API Server
   apiServerService.registerIpcHandlers()
 

@@ -19,6 +19,7 @@ import PaintingsRoutePage from './pages/paintings/PaintingsRoutePage'
 import SettingsPage from './pages/settings/SettingsPage'
 import AssistantPresetsPage from './pages/store/assistants/presets/AssistantPresetsPage'
 import TranslatePage from './pages/translate/TranslatePage'
+import OAuthCallback from './pages/auth/callback'
 
 const RouterContent: FC = () => {
   const { showSideMenu } = useShowSideMenu()
@@ -39,6 +40,7 @@ const RouterContent: FC = () => {
           <Route path="/code" element={<CodeToolsPage />} />
           <Route path="/settings/*" element={<SettingsPage />} />
           <Route path="/launchpad" element={<LaunchpadPage />} />
+          <Route path="/auth/callback" element={<OAuthCallback />} />
         </Routes>
       </ErrorBoundary>
     )

@@ -50,6 +50,7 @@ const api = {
   getAppInfo: () => ipcRenderer.invoke(IpcChannel.App_Info),
   getDiskInfo: (directoryPath: string): Promise<{ free: number; size: number } | null> =>
     ipcRenderer.invoke(IpcChannel.App_GetDiskInfo, directoryPath),
+  getHomeDir: (): Promise<string> => ipcRenderer.invoke(IpcChannel.App_GetHomeDir),
   reload: () => ipcRenderer.invoke(IpcChannel.App_Reload),
   quit: () => ipcRenderer.invoke(IpcChannel.App_Quit),
   setProxy: (proxy: string | undefined, bypassRules?: string) =>
