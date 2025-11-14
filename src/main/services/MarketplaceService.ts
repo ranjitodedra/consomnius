@@ -132,9 +132,23 @@ class MarketplaceService {
    * Get all public servers
    */
   async getAllServers(): Promise<MarketplaceServer[]> {
-    await this.ensureConnection()
+    // Check if MongoDB is configured before trying to connect
+    const connectionString = this.getConnectionString()
+    if (!connectionString) {
+      logger.warn('MongoDB not configured, returning empty server list')
+      return []
+    }
+
+    try {
+      await this.ensureConnection()
+    } catch (error: any) {
+      logger.warn('MongoDB connection failed, returning empty server list', { error: error.message })
+      return []
+    }
+
     if (!this.serversCollection) {
-      throw new Error('Database not initialized')
+      logger.warn('Database not initialized, returning empty server list')
+      return []
     }
 
     try {
