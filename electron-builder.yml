@@ -12,6 +12,11 @@ electronLanguages:
 directories:
   buildResources: build
 
+# Exclude selection-hook from rebuild to allow using prebuilt binaries for cross-compilation
+# When building Windows on macOS, we can't rebuild native modules, so prebuilds are needed
+excludeReBuildModules:
+  - selection-hook
+
 protocols:
   - name: consomnius
     schemes:
@@ -52,13 +57,17 @@ files:
   - "!node_modules/@tavily/core/node_modules/js-tiktoken"
   - "!node_modules/pdf-parse/lib/pdf.js/{v1.9.426,v1.10.88,v2.0.550}"
   - "!node_modules/mammoth/{mammoth.browser.js,mammoth.browser.min.js}"
-  - "!node_modules/selection-hook/prebuilds/**/*" # we rebuild .node, don't use prebuilds
+  # Note: prebuilds exclusion removed to allow using prebuilt binaries for Windows cross-compilation
+  # When building on macOS for Windows, we can't rebuild native modules, so prebuilds are needed
   - "!node_modules/selection-hook/node_modules" # we don't need what in the node_modules dir
   - "!node_modules/selection-hook/src" # we don't need source files
   - "!node_modules/tesseract.js-core/{tesseract-core.js,tesseract-core.wasm,tesseract-core.wasm.js}" # we don't need source files
   - "!node_modules/tesseract.js-core/{tesseract-core-lstm.js,tesseract-core-lstm.wasm,tesseract-core-lstm.wasm.js}" # we don't need source files
   - "!node_modules/tesseract.js-core/{tesseract-core-simd-lstm.js,tesseract-core-simd-lstm.wasm,tesseract-core-simd-lstm.wasm.js}" # we don't need source files
   - "!**/*.{h,iobj,ipdb,tlog,recipe,vcxproj,vcxproj.filters,Makefile,*.Makefile}" # filter .node build files
+extraResources:
+  - from: .env.production
+    to: .env
 asarUnpack:
   - resources/**
   - "**/*.{metal,exp,lib}"
@@ -72,6 +81,9 @@ win:
   signtoolOptions:
     sign: scripts/win-sign.js
   verifyUpdateCodeSignature: false
+  # Skip icon setting when cross-compiling (Wine has issues with icon.ico format)
+  # Icon will be set when building on Windows natively
+  icon: null
 nsis:
   artifactName: ${productName}-${version}-${arch}-setup.${ext}
   shortcutName: ${productName}
